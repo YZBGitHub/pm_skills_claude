@@ -2,6 +2,7 @@
 name: workflow-orchestrator
 version: 1.1.0
 model: sonnet
+license: MIT
 description: >
   Use when: 用户意图不明确，或需要感知项目状态给出推荐（跨阶段跳转、项目状态查询、兜底路由）。
   Trigger phrases: "继续"、"下一步"、"现在该做什么"、"帮我做个xxx系统"、新对话且 workspace 已有项目。

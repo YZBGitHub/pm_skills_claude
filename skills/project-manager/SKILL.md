@@ -2,6 +2,7 @@
 name: project-manager
 version: 1.1.0
 model: opus
+license: MIT
 description: >
   Use when: PRD 已定稿（含第 7、8 章），需要把功能拆分为可执行的开发模块、评估依赖、规划里程碑并输出 dev-plan.md。
   Trigger phrases: "排期"、"开发计划"、"模块拆分"、"排优先级"、"里程碑"。

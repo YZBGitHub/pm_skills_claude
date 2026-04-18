@@ -34,7 +34,10 @@
       "Bash(curl -s \"https://raw.githubusercontent.com/affaan-m/everything-claude-code/main/skills/iterative-retrieval/SKILL.md\")",
       "Bash(curl -s \"https://api.github.com/repos/affaan-m/everything-claude-code/contents/skills/autonomous-agent-harness/hooks\")",
       "Bash(chmod +x .claude/hooks/*.sh)",
-      "Bash(python3 -)"
+      "Bash(python3 -)",
+      "Bash(gh api:*)",
+      "WebFetch(domain:github.com)",
+      "WebFetch(domain:raw.githubusercontent.com)"
     ]
   }
 }

@@ -2,6 +2,7 @@
 name: design-specialist
 version: 1.2.0
 model: opus
+license: MIT
 description: >
   Use when: PRD 第 1-6 章已就位，需要补充用户故事与验收标准（第 7 章）以及设计风格定调、交互/视觉规范（第 8 章），完成 PRD 定稿。
   Trigger phrases: "用户故事"、"拆分需求"、"设计交互"、"UI规范"、"交互设计"、"视觉规范"、"设计风格"、"定调"、"UI设计师"。

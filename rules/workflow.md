@@ -55,8 +55,63 @@
 | PRD 文档 | `workspace/<项目名>/PRD.md` |
 | 开发计划 | `workspace/<项目名>/dev-plan.md` |
 | 前端原型 | `workspace/<项目名>/prototype/` |
+| 项目状态 | `workspace/<项目名>/.state.json` |
+| 审查记录 | `workspace/<项目名>/review-notes.md` |
 | 需求分析报告（可选） | `workspace/<项目名>/需求分析报告.md` |
 | 跨会话记忆 | `workspace/<项目名>/memory/` |
+
+## 项目状态机 · `.state.json` Schema
+
+每个项目根目录下必须维护 `.state.json`，由**当前角色**在进入 / 完成阶段时更新。
+
+```jsonc
+{
+  "project": "选课系统",                    // 项目名，与 workspace/<项目名>/ 一致
+  "stage": "prd_drafting",                  // 当前阶段，见下表
+  "owner_role": "prd-specialist",           // 当前负责角色
+  "last_updated": "2026-04-18T10:00:00+08:00",  // ISO 8601 含时区
+  "acceptance_criteria": [                  // 下一角色必须逐条勾选
+    {"item": "PRD 含第 1-6 章", "done": false},
+    {"item": "至少识别 3 类典型用户场景", "done": false}
+  ]
+}
+```
+
+### stage 枚举
+
+| stage 值 | 含义 | owner_role |
+|----------|------|-----------|
+| `outline_received` | 大纲已收到，待分析 | prd-specialist |
+| `prd_drafting` | PRD 1-6 章撰写中 | prd-specialist |
+| `design_drafting` | PRD 7-8 章撰写中 | design-specialist |
+| `prd_finalized` | PRD 定稿，待排期 | project-manager |
+| `plan_drafting` | 开发计划撰写中 | project-manager |
+| `plan_confirmed` | 开发计划已确认，待开发 | frontend-developer |
+| `prototype_building` | 原型开发中 | frontend-developer |
+| `review_pending` | 原型完成，待审查 | release-engineer |
+| `review_passed` | 审查通过，待部署 | release-engineer |
+| `deployed` | 已部署 | release-engineer → self-optimizer |
+
+### acceptance_criteria 机制（Goal-Driven Execution）
+
+**写入时机**: 每个角色完成本阶段时，**必须**写入下一角色的 acceptance_criteria（作为交接契约）。
+**勾选时机**: 下一角色**交付前**必须逐条勾选 `done: true`，任何一条未达成不允许 `/handoff`。
+**校验**: 详细原则见 [principles.md](principles.md) §4。
+
+**示例交接流**:
+
+```
+prd-specialist 完成 PRD 1-6 章
+  └─ 写入 acceptance_criteria for design-specialist:
+      - "用户故事覆盖第 3 章所有功能点"
+      - "视觉规范包含主色 / 辅色 / 字体 token"
+  └─ stage → "design_drafting", owner_role → "design-specialist"
+
+design-specialist 在交付前：
+  ├─ 逐条勾选 acceptance_criteria.done = true
+  ├─ 写入下一段 acceptance_criteria for project-manager
+  └─ stage → "prd_finalized"
+```
 
 ## PRD.md 完整结构
 

@@ -2,6 +2,7 @@
 name: prd-specialist
 version: 1.1.0
 model: opus
+license: MIT
 description: >
   Use when: 用户提供高职院校产品的需求大纲，或需要撰写/评审 PRD 的第 1-6 章（背景、用户、功能、非功能、埋点、边界 Case）。
   Trigger phrases: "需求分析"、"分析大纲"、"写PRD"、"生成需求文档"、"评审需求"、"审查PRD"、检测到大纲输入。

@@ -2,6 +2,7 @@
 name: release-engineer
 version: 1.1.0
 model: sonnet
+license: MIT
 description: >
   Use when: 前端原型已开发完成，需要做代码审查（6 维度检查）或部署上线。
   Trigger phrases: "审查代码"、"review"、"代码审核"、"发布"、"部署"、"上线"。

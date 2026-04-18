@@ -2,6 +2,7 @@
 name: self-optimizer
 version: 2.0.0
 model: sonnet
+license: MIT
 description: >
   Use when: 需要把会话中的用户修正、偏好、重复指令沉淀为工作流规则的优化项；或用户主动说"优化流程"、"更新规则"。
   Trigger phrases: "优化流程"、"更新规则"、"总结偏好"、"沉淀规则"、会话结束前的复盘。

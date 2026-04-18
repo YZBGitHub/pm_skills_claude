@@ -2,6 +2,7 @@
 name: frontend-developer
 version: 1.1.0
 model: sonnet
+license: MIT
 description: >
   Use when: dev-plan.md 已确认，需要按里程碑开发高保真 React 原型（默认 Vite + React + Tailwind CSS，内置 Three.js 3D 支援）。
   Trigger phrases: "生成原型"、"开始开发"、"出页面"、"写前端"、"实现页面"。

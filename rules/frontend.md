@@ -157,3 +157,38 @@ npm install three @react-three/fiber @react-three/drei
 | 响应式适配 | PC/平板/移动三档正常 |
 | 性能 | CDN 稳定版、依赖精简、图片合理 |
 | 可访问性 | img 有 alt、input 关联 label、按钮有可识别文字 |
+
+## Surgical Changes（外科手术式修复）
+
+> 适用于 **release-engineer** 的审查回归阶段，以及 **frontend-developer** 的迭代阶段。
+> 配套上位准则见 [principles.md](principles.md) §3。
+
+**铁则**: 只动被点名的问题；**审查不是二次开发**。
+
+| 情况 | 处理 |
+|------|------|
+| 6 维度命中的具体问题 | ✅ 在本次改动里修复 |
+| 仅本次改动产生的孤立代码（unused import / 空函数） | ✅ 顺手清理 |
+| 与本次问题无关的代码 smell（命名差、过度复杂、轻微死代码） | ❌ **不动** —— 写入 `workspace/<项目>/review-notes.md` |
+| 全局重构念头（"整个目录都该重组"） | ❌ **不动** —— 起一个独立的 follow-up 任务，由用户决定排期 |
+| 第三方依赖升级 | ❌ 必须先与用户确认 |
+
+**review-notes.md 格式**:
+
+```markdown
+# Review Notes — <项目名>
+
+## <YYYY-MM-DD> · 第 N 轮审查
+
+### 本轮已修复
+- [ ] <问题> @ src/path/file.jsx:42
+
+### 暂不修复（写入 backlog）
+- 原因 / 影响 / 建议处理时机
+- 例：`Sidebar.jsx` 重复了 3 处菜单 className → 影响小，建议下次迭代统一抽 token
+```
+
+**违反 Surgical Changes 的典型反例**:
+- 审查时把 PascalCase 的"瑕疵"全局批量改名 → ❌
+- 改一个按钮文案时顺手优化整个页面布局 → ❌
+- 修一个 a11y 问题时引入新的依赖 → ❌（必须先确认）

@@ -10,10 +10,11 @@
 
 | 规则文件 | 作用域 | 谁需要遵守 |
 |---------|--------|----------|
+| [rules/principles.md](rules/principles.md) | 行为准则：想清楚、简洁、外科手术、目标驱动 | **所有角色（强制）** |
 | [rules/general.md](rules/general.md) | 通用原则、行业背景、输出规范 | 所有角色 |
-| [rules/workflow.md](rules/workflow.md) | 阶段切换、确认机制、触发路由、产物路径 | 所有角色 |
+| [rules/workflow.md](rules/workflow.md) | 阶段切换、确认机制、触发路由、产物路径、`.state.json` schema | 所有角色 |
 | [rules/prd.md](rules/prd.md) | PRD 撰写标准、视觉规范色板、自评审清单 | prd-specialist, design-specialist |
-| [rules/frontend.md](rules/frontend.md) | 技术栈、代码规范、高保真标准、代码审查 | frontend-developer, release-engineer |
+| [rules/frontend.md](rules/frontend.md) | 技术栈、代码规范、高保真标准、代码审查、Surgical Changes | frontend-developer, release-engineer |
 
 ## 工作流总览
 
@@ -88,9 +89,16 @@
 name: <skill-slug>
 version: <semver>
 model: opus | sonnet | default    # 可选，声明首选模型
+license: MIT                       # 便于分发与开源
 description: >
   Use when: <激活场景>。
   Trigger phrases: <触发关键词列表>。
   Do NOT use for: <应重定向的场景>。
 ---
 ```
+
+## 插件分发
+
+本项目整体可作为 Claude Code Plugin 分发给团队成员。配置见 `.claude-plugin/plugin.json`。
+
+端到端使用示例见 [EXAMPLES.md](EXAMPLES.md)。

@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-plugin.json",
+  "name": "pm-skills-tos",
+  "version": "1.0.0",
+  "description": "面向 ToS（高职院校客户）的产品需求设计与原型开发 Skills 工作流。6 主角色 + 1 总控，从需求大纲到高保真原型部署上线全流程串联。",
+  "author": {
+    "name": "YZB"
+  },
+  "license": "MIT",
+  "keywords": [
+    "ToS",
+    "高职院校",
+    "PRD",
+    "product-management",
+    "ui-design",
+    "frontend-prototype",
+    "workflow"
+  ],
+  "skills": [
+    "skills/workflow-orchestrator",
+    "skills/prd-specialist",
+    "skills/design-specialist",
+    "skills/project-manager",
+    "skills/frontend-developer",
+    "skills/release-engineer",
+    "skills/self-optimizer"
+  ],
+  "rules": [
+    "rules/principles.md",
+    "rules/general.md",
+    "rules/workflow.md",
+    "rules/prd.md",
+    "rules/frontend.md"
+  ],
+  "commands": ".claude/commands",
+  "agents": ".claude/agents",
+  "hooks": ".claude/hooks",
+  "homepage": "https://github.com/YZB/pm_skills_claude",
+  "documentation": "EXAMPLES.md"
+}
