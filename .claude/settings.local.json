@@ -1,0 +1,40 @@
+{
+  "permissions": {
+    "allow": [
+      "WebSearch",
+      "Bash(curl -s \"https://raw.githubusercontent.com/affaan-m/everything-claude-code/main/README.md\")",
+      "Bash(curl -s \"https://api.github.com/repos/affaan-m/everything-claude-code/contents/\")",
+      "Bash(curl -s \"https://raw.githubusercontent.com/affaan-m/everything-claude-code/main/AGENTS.md\")",
+      "Bash(curl -s \"https://api.github.com/repos/affaan-m/everything-claude-code/contents/skills\")",
+      "Bash(python3 -c \"import json,sys; data=json.load\\(sys.stdin\\); [print\\(d['name']\\) for d in data if d['type']=='dir']\")",
+      "Bash(curl -s \"https://raw.githubusercontent.com/affaan-m/everything-claude-code/main/skills/autonomous-agent-harness/SKILL.md\")",
+      "Bash(curl -s \"https://raw.githubusercontent.com/affaan-m/everything-claude-code/main/skills/tdd-workflow/SKILL.md\")",
+      "Bash(curl -s \"https://raw.githubusercontent.com/affaan-m/everything-claude-code/main/.claude/CLAUDE.md\")",
+      "Bash(curl -s \"https://api.github.com/repos/affaan-m/everything-claude-code/contents/.claude\")",
+      "Bash(python3 -c \"import json,sys; data=json.load\\(sys.stdin\\); [print\\(d['name'], d['type']\\) for d in data]\")",
+      "Bash(curl -s \"https://api.github.com/repos/affaan-m/everything-claude-code/contents/skills/continuous-learning-v2\")",
+      "Bash(python3 -c \"import json,sys; data=json.load\\(sys.stdin\\); [print\\(d['name']\\) for d in data]\")",
+      "Bash(curl -s \"https://api.github.com/repos/affaan-m/everything-claude-code/contents/hooks\")",
+      "Bash(curl -s \"https://raw.githubusercontent.com/affaan-m/everything-claude-code/main/hooks/hooks.json\")",
+      "Bash(curl -s \"https://raw.githubusercontent.com/affaan-m/everything-claude-code/main/skills/continuous-learning-v2/SKILL.md\")",
+      "Bash(curl -s \"https://raw.githubusercontent.com/affaan-m/everything-claude-code/main/skills/configure-ecc/SKILL.md\")",
+      "Bash(curl -s \"https://api.github.com/repos/affaan-m/everything-claude-code/contents/.agents\")",
+      "Bash(curl -s \"https://api.github.com/repos/affaan-m/everything-claude-code/contents/.agents/skills\")",
+      "Bash(curl -s \"https://api.github.com/repos/affaan-m/everything-claude-code/contents/agents\")",
+      "Bash(curl -s \"https://raw.githubusercontent.com/affaan-m/everything-claude-code/main/agents/architect.md\")",
+      "Bash(curl -s \"https://raw.githubusercontent.com/affaan-m/everything-claude-code/main/agents/planner.md\")",
+      "Bash(curl -s \"https://raw.githubusercontent.com/affaan-m/everything-claude-code/main/skills/council/SKILL.md\")",
+      "Bash(curl -s \"https://raw.githubusercontent.com/affaan-m/everything-claude-code/main/skills/blueprint/SKILL.md\")",
+      "Bash(curl -s \"https://raw.githubusercontent.com/affaan-m/everything-claude-code/main/skills/skill-stocktake/SKILL.md\")",
+      "Bash(curl -s \"https://api.github.com/repos/affaan-m/everything-claude-code/contents/.claude-plugin\")",
+      "Bash(curl -s \"https://raw.githubusercontent.com/affaan-m/everything-claude-code/main/.claude-plugin/plugin.json\")",
+      "Bash(curl -s \"https://raw.githubusercontent.com/affaan-m/everything-claude-code/main/skills/dmux-workflows/SKILL.md\")",
+      "Bash(curl -s \"https://raw.githubusercontent.com/affaan-m/everything-claude-code/main/skills/santa-method/SKILL.md\")",
+      "Bash(curl -s \"https://raw.githubusercontent.com/affaan-m/everything-claude-code/main/skills/strategic-compact/SKILL.md\")",
+      "Bash(curl -s \"https://raw.githubusercontent.com/affaan-m/everything-claude-code/main/skills/iterative-retrieval/SKILL.md\")",
+      "Bash(curl -s \"https://api.github.com/repos/affaan-m/everything-claude-code/contents/skills/autonomous-agent-harness/hooks\")",
+      "Bash(chmod +x .claude/hooks/*.sh)",
+      "Bash(python3 -)"
+    ]
+  }
+}

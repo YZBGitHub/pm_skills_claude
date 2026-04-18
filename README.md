@@ -8,38 +8,38 @@
 需求大纲
     │
     ▼
-[0] workflow-orchestrator  工作流总控        识别意图、感知项目状态、路由到正确角色
+[0] 领航员 · workflow-orchestrator           识别意图、感知项目状态、路由到正确角色
     │
     ▼
-[1] prd-specialist         需求与PRD专家     需求分析 + PRD撰写 + 需求评审 → PRD.md 1-6章
+[1] 需求架构师 · prd-specialist              需求分析 + PRD撰写 + 需求评审 → PRD.md 1-6章
     │
     ▼
-[2] design-specialist      设计规范专家      用户故事 + UI/UX规范 → PRD.md 7-8章 定稿
+[2] UI/UX 设计师 · design-specialist           用户故事 + UI/UX规范 → PRD.md 7-8章 定稿
     │
     ▼
-[3] project-manager        研发项目经理      → 开发计划（模块拆分/优先级/里程碑）← 用户确认节点
+[3] 研发调度官 · project-manager             → 开发计划（模块拆分/优先级/里程碑）← 用户确认节点
     │
     ▼
-[4] frontend-developer     高级前端开发      → 高保真原型（Vite+React，含Three.js 3D支援）
+[4] 原型构筑师 · frontend-developer          → 高保真原型（Vite+React，含Three.js 3D支援）
     │
     ▼
-[5] release-engineer       发布工程师        代码审查 + 部署上线
+[5] 发布守门人 · release-engineer            代码审查 + 部署上线
     │
     ▼
-[6] self-optimizer         自我优化专家      持续采集反馈，优化工作流（后台运行）
+[6] 工作流复盘师 · self-optimizer            持续采集反馈，优化工作流（后台运行）
 ```
 
 ## Skills 角色
 
-| # | 角色 | Skill | 触发 |
-|---|------|-------|------|
-| 0 | 工作流总控 | workflow-orchestrator | "继续"、"下一步"、"现在该做什么"、意图不明确时 |
-| 1 | 需求与PRD专家 | prd-specialist | "需求分析"、"写PRD"、"评审需求"、上传大纲 |
-| 2 | 设计规范专家 | design-specialist | "用户故事"、"UI规范"、"交互设计"、"视觉规范" |
-| 3 | 研发项目经理 | project-manager | "排期"、"开发计划"、"模块拆分"、"里程碑" |
-| 4 | 高级前端开发 | frontend-developer | "生成原型"、"开始开发"、"出页面"、"写前端" |
-| 5 | 发布工程师 | release-engineer | "审查代码"、"review"、"发布"、"部署"、"上线" |
-| 6 | 自我优化专家 | self-optimizer | "优化流程"、"更新规则" |
+| # | 身份名 | Skill slug | 触发 |
+|---|-------|-----------|------|
+| 0 | 领航员 | workflow-orchestrator | "继续"、"下一步"、"现在该做什么"、意图不明确时 |
+| 1 | 需求架构师 | prd-specialist | "需求分析"、"写PRD"、"评审需求"、上传大纲 |
+| 2 | UI/UX 设计师 | design-specialist | "用户故事"、"UI规范"、"交互设计"、"视觉规范" |
+| 3 | 研发调度官 | project-manager | "排期"、"开发计划"、"模块拆分"、"里程碑" |
+| 4 | 原型构筑师 | frontend-developer | "生成原型"、"开始开发"、"出页面"、"写前端" |
+| 5 | 发布守门人 | release-engineer | "审查代码"、"review"、"发布"、"部署"、"上线" |
+| 6 | 工作流复盘师 | self-optimizer | "优化流程"、"更新规则" |
 
 ## 目录结构
 
