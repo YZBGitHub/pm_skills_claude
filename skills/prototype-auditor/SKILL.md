@@ -36,6 +36,7 @@ description: >
 - 配色明显偏离 PRD §8 定义（不是细微色差，是"完全不是这个色系"）
 - 字体大到撑破容器 / 小到看不清
 - 按钮 / 图标缺失渲染（出现 `<img>` 裂图、emoji 占位、图标方框）
+- **明显的 AI 味硬伤**：indigo→pink 默认渐变 CTA、标题装饰 emoji、玻璃拟态整页基调、抽象 3D / 流体 hero —— 详见 `skills/design-specialist/SKILL.md` §2.1.5 红线
 
 ### 2. 关键交互断裂（Broken Key Interactions）
 - 主导航点击无反应 / 跳到 404

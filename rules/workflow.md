@@ -77,9 +77,27 @@
   "acceptance_criteria": [                  // 下一角色必须逐条勾选
     {"item": "PRD 含第 1-6 章", "done": false},
     {"item": "至少识别 3 类典型用户场景", "done": false}
+  ],
+  "milestones": [                           // 仅 plan_confirmed 起出现，由 project-manager 初始化、frontend-developer 滚动更新
+    {"id": "MS1", "name": "框架搭建", "status": "done",        "completed_at": "2026-04-19T15:00:00+08:00"},
+    {"id": "MS2", "name": "核心功能", "status": "in_progress", "completed_at": null},
+    {"id": "MS3", "name": "功能完善", "status": "pending",     "completed_at": null}
+  ],
+  "modules": [                              // 同上，模块级粒度，与 dev-plan.md 模块表保持一致
+    {"id": "M1", "name": "登录/权限", "milestone": "MS1", "status": "done", "completed_at": "2026-04-19T14:00:00+08:00"},
+    {"id": "M2", "name": "基础数据", "milestone": "MS2", "status": "in_progress", "completed_at": null}
   ]
 }
 ```
+
+### milestones / modules 字段约定
+
+- **status 枚举**：`pending` / `in_progress` / `done` / `blocked`
+- **completed_at**：`done` 时写入 ISO 8601；其他状态为 `null`
+- **写入责任**：
+  - project-manager 在 `plan_confirmed` 阶段初始化两个数组，所有项 `status=pending` / `completed_at=null`
+  - frontend-developer 在每完成 1 个模块或 1 个里程碑时，**同步更新** `.state.json` 与 `dev-plan.md` 中对应的状态列与完成时间列；不允许只更新一处
+  - prototype-auditor / 其他下游角色**只读**，不修改
 
 ### stage 枚举
 

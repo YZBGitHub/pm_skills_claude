@@ -58,6 +58,23 @@ npx skills add https://github.com/anthropics/skills --skill frontend-design
 - frontend-design 给出的视觉建议**必须服从 PRD §8.1 已定调的风格**，冲突时回到 design-specialist 调整 PRD，不得绕过 PRD 自由发挥
 - frontend-design 输出的设计 token 必须能映射到 tailwind.config.js
 
+### 反 AI 味自检（每个里程碑交付前对照）
+
+参考 `skills/design-specialist/SKILL.md` §2.1.5（11 条通用红线）和 §2.1.6（mock 数据红线）。**交付前 frontend-developer 必须自查**，命中任何一条即视为未达交付标准：
+
+- [ ] 没有用 indigo→pink 默认渐变 CTA
+- [ ] 标题文本没有装饰 emoji
+- [ ] 卡片圆角符合 PRD §8.1 风格档位（不是默认 `rounded-2xl`）
+- [ ] 没有把玻璃拟态当整页基调
+- [ ] Hero / 首屏没有抽象 3D / 流体 / 粒子
+- [ ] 没有空洞标语（智慧/赋能/一站式/致力于打造）
+- [ ] hover 动效有合理理由，不是全部弹跳旋转
+- [ ] 头像不是 dicebear / Unsplash 风景照
+- [ ] mock 数据有真实分布（含缺勤、不及格、空状态）
+- [ ] 字体没有渐变 + 描边 + 阴影叠加
+- [ ] 一个页面主色 ≤ 2 种 + 灰阶
+- [ ] mock 课程名 / 班级名 / 姓名是真实高职场景命名（不是 Course A / 测试1）
+
 ## 职责
 
 - 根据 PRD.md 和 dev-plan.md 开发高保真原型
@@ -251,7 +268,14 @@ npm install three @react-three/fiber @react-three/drei
 
 详见 [rules/frontend.md](../../rules/frontend.md) 的 3D 模块规范章节。
 
-### Step 6: 每批完成后通知
+### Step 6: 每批完成后同步状态 + 通知
+
+**完成动作（顺序，缺一不可）**：
+
+1. **更新 `dev-plan.md`** —— 找到本里程碑所在行，把 `状态` 改为 `done`、`完成时间` 写当前 ISO 时间；同步把本里程碑包含的所有模块在"模块级状态表"里也改为 `done`
+2. **更新 `workspace/<项目>/.state.json`** —— `milestones[]` 和 `modules[]` 中对应条目的 `status` / `completed_at` 字段同步修改（schema 见 `rules/workflow.md`）
+3. **如遇阻塞**：状态写 `blocked`，在 `dev-plan.md` 备注列写明阻塞原因（如"等待 PRD §3.5 字段确认"），并在通知里高亮
+4. **通知用户**：
 
 ```
 [里程碑 N 完成] <里程碑名称>
@@ -262,11 +286,18 @@ npm install three @react-three/fiber @react-three/drei
 - /module-a/list — 列表页
 ...
 
+状态同步:
+- dev-plan.md MS<N> → done
+- .state.json milestones[<N>].status → done, completed_at = <ISO 时间>
+- 本里程碑包含模块 M<x>, M<y> → done
+
 本地预览: npm run dev
 下一批: <里程碑 N+1 内容>
 
 是否继续下一批？
 ```
+
+**红线**：禁止只更新 `dev-plan.md` 不更新 `.state.json`，反之亦然 —— 两处必须一致，否则下游 `/status` 命令会报错。
 
 ## 代码规范
 

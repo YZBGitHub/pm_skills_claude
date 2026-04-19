@@ -37,10 +37,20 @@ Produce prototype artifacts under `workspace/<project>/prototype/`:
 - If 3D scene needed: Three.js + @react-three/fiber, lazy-loaded, with fallback
 - A `README.md` inside prototype/ with run instructions
 
-Update `.state.json`:
+Update `.state.json` AND `dev-plan.md` together (both must agree):
+
 ```json
-{"project":"<name>","stage":"prototype","owner_role":"frontend-developer","last_updated":"<ISO8601>","milestone":"<M-id>"}
+{
+  "project":"<name>",
+  "stage":"prototype_building",
+  "owner_role":"frontend-developer",
+  "last_updated":"<ISO8601>",
+  "milestones": [{"id":"MS1","name":"...","status":"done","completed_at":"<ISO8601>"}, ...],
+  "modules":    [{"id":"M1","name":"...","milestone":"MS1","status":"done","completed_at":"<ISO8601>"}, ...]
+}
 ```
+
+In `dev-plan.md`, update both the milestone table's `状态` / `完成时间` columns and the module-level table — values must match `.state.json`. See `rules/workflow.md` § milestones / modules 字段约定 for schema rules.
 
 Return a summary + next-step recommendation: "`/handoff <project> audit` 进入 prototype-auditor 末端审核（如需部署再用 `/deploy <project> <platform>`）"。
 
