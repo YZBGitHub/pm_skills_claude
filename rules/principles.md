@@ -1,7 +1,7 @@
 # 行为准则（Behavioral Principles）
 
 > 本文件定义所有角色在"思考与产出"层面的通用准则，与 [general.md](general.md) 的"价值与立场"互补。
-> 灵感来自 Andrej Karpathy 关于 LLM 编码失败模式的总结，结合本项目 ToS 高职院校工作流落地。
+> 灵感来自 Andrej Karpathy 关于 LLM 编码失败模式的总结，结合本项目高等职业教育院校工作流落地。
 > **每次会话自动生效，所有角色必须遵循。**
 
 ---
@@ -19,10 +19,11 @@
 
 **对各角色的具体落地**:
 - **prd-specialist**: 需求大纲含糊处必须列假设回问，而非用"通用做法"补全
+- **prd-reviewer**: 不接受 prd-specialist 的自我辩护，所有问题以 PRD 原文为依据
 - **design-specialist**: 设计风格定调前先确认目标用户群体和品牌偏好
 - **project-manager**: 排期前确认资源约束（人力 / 周期 / 平台）
 - **frontend-developer**: 技术栈、第三方依赖偏离默认时必须先确认
-- **release-engineer**: 部署平台、域名、回滚策略由用户确认，不自选
+- **prototype-auditor**: 看到第 4 项硬伤就停下扔 backlog，不擅自扩大审核范围；部署不归本角色，由 `/deploy` 命令独立处理
 
 ---
 
@@ -40,7 +41,7 @@
 - **design-specialist**: 不为单一页面设计独立组件库；复用 PRD 视觉规范色板即可
 - **project-manager**: 里程碑只拆到能交付的颗粒度，不做"理论最优"WBS
 - **frontend-developer**: Mock 数据够用即可，不搭建假后端；不引入状态管理库除非组件树跨 3 层
-- **release-engineer**: 审查只针对本次改动，不顺手"优化"无关代码（详见 [frontend.md](frontend.md) Surgical Changes 节）
+- **prototype-auditor**: 不做"全面 QA"——只挑 3 类硬伤，每类最多 1 条，凑 4 条就违反 Simplicity
 
 ---
 
@@ -55,10 +56,11 @@
 - 不删除非相关死代码（即使你认为它没用），最多在 review-notes 里提一句
 
 **对各角色的具体落地**:
-- **prd-specialist** 二次评审时：只更新被点名的章节，不重写已定稿部分
+- **prd-specialist** 响应评审反馈时：只修订 prd-reviewer 报告中点名的条目，不重写已通过的章节
+- **prd-reviewer** 评审时：只指问题不写 PRD，不替 prd-specialist 改稿
 - **design-specialist** 调整 UI 规范时：只改受影响的组件规范，不全局调色
 - **frontend-developer** 迭代时：只改要求的页面 / 组件，新发现的问题写入 review-notes
-- **release-engineer** 审查回归时：只动违反 6 维度的具体问题，不"代码品味"式重写
+- **prototype-auditor** 审核时：不动代码、不重写文案，只在 audit-quick.md 报告里指明位置和现象
 
 ---
 
@@ -94,8 +96,8 @@
 - **prd-specialist** 完成后写入下一阶段（design-specialist）的验收项，例如"用户故事覆盖第 3 章所有功能点"
 - **design-specialist** 完成后写入 project-manager 的验收项，例如"PRD 第 8 章配色 token 与 tailwind.config.js 字段一一对应"
 - **project-manager** 完成后写入 frontend-developer 的验收项，例如"按里程碑 1 交付 Dashboard + Layout，含路由"
-- **frontend-developer** 完成后写入 release-engineer 的验收项，例如"6 维度审查项全部通过"
-- **release-engineer** 完成后写入 self-optimizer 的复盘项
+- **frontend-developer** 完成后写入 prototype-auditor 的验收项，例如"主导航各 Tab 可点击且无 404"、"mock 数据无 Lorem ipsum / undefined"
+- **prototype-auditor** 完成后写入 self-optimizer 的复盘项（passed 或修复后的 lessons learned）
 
 ---
 

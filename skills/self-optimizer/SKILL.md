@@ -24,7 +24,8 @@ description: >
 | 写用户故事 / UI 规范 | design-specialist |
 | 做开发计划 | project-manager |
 | 写前端 | frontend-developer |
-| 审查代码 / 部署 | release-engineer |
+| 末端硬伤审核 | prototype-auditor |
+| 部署上线 | `/deploy` 命令（独立流程） |
 
 ## 核心设计：三层记忆架构
 
@@ -192,8 +193,8 @@ instincts/promoted/<id>.md + 更新变更日志
 ## 不可自动修改（需用户显式要求）
 
 - 角色的基本职责定义
-- 工作流主串联顺序（0 → 1 → 2 → 3 → 4 → 5）
-- 七个角色的合并边界
+- 工作流主串联顺序（0 → 1 → 1.5 → 2 → 3 → 4 → 5）
+- 八个角色的合并边界
 - 本 SKILL.md 本身
 
 ## 项目作用域判定

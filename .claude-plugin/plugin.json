@@ -1,28 +1,40 @@
 {
   "$schema": "https://json.schemastore.org/claude-code-plugin.json",
-  "name": "pm-skills-tos",
-  "version": "1.0.0",
-  "description": "面向 ToS（高职院校客户）的产品需求设计与原型开发 Skills 工作流。6 主角色 + 1 总控，从需求大纲到高保真原型部署上线全流程串联。",
+  "name": "pm-skills-vocational-college",
+  "version": "2.1.0",
+  "description": "面向高等职业教育院校用户的产品需求设计与原型开发 Skills 工作流。7 主角色 + 1 总控（含独立的 prd-reviewer 刁钻评审官 + 末端硬伤检查 prototype-auditor），从需求大纲到高保真原型再到可选部署全流程串联。部署独立到 /deploy 命令，不绑角色。",
   "author": {
     "name": "YZB"
   },
   "license": "MIT",
   "keywords": [
-    "ToS",
+    "高等职业教育院校",
     "高职院校",
     "PRD",
     "product-management",
     "ui-design",
     "frontend-prototype",
-    "workflow"
+    "workflow",
+    "prd-review",
+    "frontend-design"
+  ],
+  "recommendedSkills": [
+    {
+      "name": "frontend-design",
+      "source": "https://github.com/anthropics/skills",
+      "install": "npx skills add https://github.com/anthropics/skills --skill frontend-design",
+      "usedBy": ["frontend-developer"],
+      "purpose": "提升原型视觉精度，尤其针对 D 科技未来 / E 友好温暖 等需要超出 Tailwind 默认的风格"
+    }
   ],
   "skills": [
     "skills/workflow-orchestrator",
     "skills/prd-specialist",
+    "skills/prd-reviewer",
     "skills/design-specialist",
     "skills/project-manager",
     "skills/frontend-developer",
-    "skills/release-engineer",
+    "skills/prototype-auditor",
     "skills/self-optimizer"
   ],
   "rules": [

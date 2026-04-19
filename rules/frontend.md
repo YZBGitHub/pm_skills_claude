@@ -1,6 +1,6 @@
 # 前端技术规范（Frontend Rules）
 
-> 本文件定义前端技术栈、代码规范、开发流程，由 frontend-developer 和 release-engineer 遵循。
+> 本文件定义前端技术栈、代码规范、开发流程，由 frontend-developer 遵循；prototype-auditor 仅作视觉与交互基线对照，不做完整代码评审。
 
 ## 默认技术栈
 
@@ -147,29 +147,33 @@ npm install three @react-three/fiber @react-three/drei
 - 默认启用 `<Suspense>` + loading 兜底
 - 移动端降级或隐藏 3D 展示
 
-## 代码审查维度
+## 撰写自检（frontend-developer 在交付前的最低基线）
 
-| 维度 | 检查项 |
+> 注：本工作流**不再做完整 6 维度代码评审**（以前由 release-engineer 承担，实测价值低）。
+> 末端只做 prototype-auditor 的 3 项硬伤检查。下面这份清单是 frontend-developer **自己在交付前**对照的最低基线，不是评审者的检查表。
+
+| 维度 | 自检项 |
 |------|--------|
-| 代码质量 | 函数式组件、无 console.log、无重复、命名规范 |
-| 视觉还原 | 配色/字体/间距/圆角/阴影与 PRD 一致 |
-| 交互完整性 | 路由无死链、危险操作有确认、空状态处理 |
-| 响应式适配 | PC/平板/移动三档正常 |
-| 性能 | CDN 稳定版、依赖精简、图片合理 |
-| 可访问性 | img 有 alt、input 关联 label、按钮有可识别文字 |
+| 视觉还原 | 配色/字体/间距/圆角/阴影与 PRD §8 一致 |
+| 交互可用 | 主导航无 404、关键 CTA 有反馈、空状态有处理 |
+| 响应式 | PC/平板/移动三档不溢出 |
+| 内容真实 | 无 Lorem ipsum / undefined / NaN / `1970-01-01` / 风景照头像 |
+| 基础卫生 | 无 console.log、无 unused import、组件单一职责 |
+
+完整代码评审 / Bundle 分析 / 类型审计 / a11y 全量审计 **不在本工作流职责内**。如团队需要，自行接 ESLint / TypeScript strict / axe-core 等 CI 工具，不靠 AI 角色承担。
 
 ## Surgical Changes（外科手术式修复）
 
-> 适用于 **release-engineer** 的审查回归阶段，以及 **frontend-developer** 的迭代阶段。
+> 适用于 **frontend-developer** 的迭代阶段（含响应 prototype-auditor 反馈的修复）。
 > 配套上位准则见 [principles.md](principles.md) §3。
 
-**铁则**: 只动被点名的问题；**审查不是二次开发**。
+**铁则**: 只动被点名的问题；**修复不是二次开发**。
 
 | 情况 | 处理 |
 |------|------|
-| 6 维度命中的具体问题 | ✅ 在本次改动里修复 |
+| audit-quick.md 命中的具体硬伤 | ✅ 在本次改动里修复 |
 | 仅本次改动产生的孤立代码（unused import / 空函数） | ✅ 顺手清理 |
-| 与本次问题无关的代码 smell（命名差、过度复杂、轻微死代码） | ❌ **不动** —— 写入 `workspace/<项目>/review-notes.md` |
+| 与本次问题无关的代码 smell（命名差、过度复杂、轻微死代码） | ❌ **不动** —— 写入 `workspace/<项目>/audit-quick.md` 的 backlog 段或起独立 follow-up |
 | 全局重构念头（"整个目录都该重组"） | ❌ **不动** —— 起一个独立的 follow-up 任务，由用户决定排期 |
 | 第三方依赖升级 | ❌ 必须先与用户确认 |
 

@@ -21,8 +21,9 @@ description: 展示 workspace/ 下所有项目的阶段状态
 - `prd` → `/handoff <项目> design` 进入 design-specialist
 - `design` → `/plan <项目>`
 - `plan` → `/build <项目>`（需用户确认计划后）
-- `prototype` → `/handoff <项目> review`
-- `review` → 由 release-engineer 部署
+- `prototype` → `/handoff <项目> audit` 进入 prototype-auditor 末端审核
+- `audit_quick` (passed) → 可交付验收；如需部署用 `/deploy <项目> <平台>`
+- `audit_quick` (needs_fix) → `/handoff <项目> prototype` 回交 frontend-developer 修复
 - `deployed` → 可启动下一迭代或 self-optimizer 复盘
 
 若 workspace/ 为空，提示用户：请提供需求大纲，使用 `/prd <项目名> <大纲>` 启动。

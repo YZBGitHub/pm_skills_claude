@@ -7,20 +7,24 @@ argument-hint: <项目名> <next-stage>
 
 **参数**：
 - `<项目名>`：workspace 下的项目目录名
-- `<next-stage>`：允许值 `prd | design | plan | prototype | review | deployed`
+- `<next-stage>`：允许值 `prd | prd-review | design | plan | prototype | audit | deployed`
 
 **Stage → 默认角色映射**：
 
 | stage | owner_role |
 |-------|-----------|
 | prd | prd-specialist |
+| prd-review | prd-reviewer |
 | design | design-specialist |
 | plan | project-manager |
 | prototype | frontend-developer |
-| review | release-engineer |
-| deployed | release-engineer |
+| audit | prototype-auditor |
+| deployed | —（由 `/deploy` 命令负责，不绑角色） |
 
-**标准阶段顺序**：`prd → design → plan → prototype → review → deployed`
+**标准阶段顺序**：`prd → prd-review ↺ prd → design → plan → prototype → audit → (可选) deployed`
+
+`prd ↔ prd-review` 之间形成循环：评审有 Blocker/Major 时回到 prd 修订，连续 2 轮无 Blocker/Major 才能进入 design。
+`audit → deployed` 不通过 `/handoff` 触发，由用户主动执行 `/deploy <项目> <平台>`。
 
 **执行流程**：
 
@@ -30,7 +34,7 @@ argument-hint: <项目名> <next-stage>
    - 进入 `design`：PRD.md 第 1-6 章存在
    - 进入 `plan`：PRD.md 1-9 章齐全
    - 进入 `prototype`：dev-plan.md 存在且用户已确认
-   - 进入 `review`：`prototype/` 下有可运行的前端工程
+   - 进入 `audit`：`prototype/` 下有可运行的前端工程
 4. 前置校验通过后，**输出 rules/workflow.md 的确认模板**，等待用户 Y/N/调整
 5. 用户确认后，更新 `workspace/<项目名>/.state.json`：
    ```json

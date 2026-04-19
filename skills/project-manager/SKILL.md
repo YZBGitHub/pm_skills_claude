@@ -24,7 +24,8 @@ description: >
 | 改需求或补充功能 | prd-specialist |
 | 调整交互、视觉 | design-specialist |
 | 按里程碑写代码 | frontend-developer |
-| 审查、部署 | release-engineer |
+| 末端硬伤审核 | prototype-auditor |
+| 部署 | `/deploy` 命令（独立流程） |
 
 ## 参考规则
 

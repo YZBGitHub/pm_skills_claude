@@ -6,7 +6,7 @@ license: MIT
 description: >
   Use when: 用户意图不明确，或需要感知项目状态给出推荐（跨阶段跳转、项目状态查询、兜底路由）。
   Trigger phrases: "继续"、"下一步"、"现在该做什么"、"帮我做个xxx系统"、新对话且 workspace 已有项目。
-  Do NOT use for: 已有明确触发词的直接任务（如"写PRD" → prd-specialist，"部署" → release-engineer）。
+  Do NOT use for: 已有明确触发词的直接任务（如"写PRD" → prd-specialist，"审一下" → prototype-auditor，"部署" → `/deploy` 命令）。
   本角色是兜底路由，优先让用户直接触发目标角色。
 ---
 
@@ -25,7 +25,8 @@ description: >
 | 补充用户故事、UI/UX 规范 | design-specialist |
 | 制定开发计划、排期 | project-manager |
 | 开发前端原型 | frontend-developer |
-| 代码审查、部署 | release-engineer |
+| 末端硬伤审核 | prototype-auditor |
+| 部署上线 | `/deploy` 命令（独立流程，不绑角色） |
 | 优化工作流规则 | self-optimizer |
 
 **仅在用户意图真的不明确时介入**，避免拦截明确的直接请求。
@@ -52,7 +53,7 @@ description: >
 | PRD.md（无第7章） | PRD初稿完成 | design-specialist |
 | PRD.md（有第7、8章） | PRD定稿 | project-manager |
 | dev-plan.md | 开发计划完成 | frontend-developer |
-| prototype/ 目录 | 原型开发中 | frontend-developer 或 release-engineer |
+| prototype/ 目录 | 原型开发中 / 已完成 | frontend-developer（继续）或 prototype-auditor（末端审核） |
 | 部署URL记录 | 已部署 | 完成 / self-optimizer |
 
 ---
@@ -68,8 +69,8 @@ description: >
 | "用户故事"、"交互规范"、"UI规范" | design-specialist | |
 | "排期"、"开发计划"、"模块拆分" | project-manager | |
 | "生成原型"、"开始开发"、"出页面" | frontend-developer | |
-| "审查代码"、"review" | release-engineer | |
-| "发布"、"部署"、"上线" | release-engineer | 触发内部部署流程 |
+| "审一下"、"看看明显问题"、"末端审核" | prototype-auditor | 仅 3 项硬伤检查 |
+| "发布"、"部署"、"上线" | `/deploy <项目> <平台>` | 独立命令，不绑角色 |
 | "优化流程"、"更新规则" | self-optimizer | |
 | "继续"、"下一步" | 基于状态感知推断 | 扫描 workspace 后建议 |
 | "现在该做什么" | 基于状态感知推断 | 同上 |
@@ -148,7 +149,10 @@ B) 从 PRD 修改开始，重走 design-specialist 和 project-manager 阶段
 [4] frontend-developer      高保真原型（Vite+React，含3D时内置Three.js支援）
     │
     ▼
-[5] release-engineer        代码审查 + 部署上线
+[5] prototype-auditor       末端简易审核（≤3 项硬伤）
+    │
+    ▼
+（可选）/deploy <项目> <平台>  用户主动触发，不绑角色
     │
     ▼
 [6] self-optimizer          持续采集反馈，优化工作流（后台运行）

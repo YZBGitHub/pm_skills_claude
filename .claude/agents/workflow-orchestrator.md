@@ -54,7 +54,8 @@ Priority order (from rules/workflow.md):
 | 包含"用户故事"/"UI规范"/"交互设计" | design-specialist |
 | 包含"排期"/"开发计划"/"模块拆分" | project-manager |
 | 包含"生成原型"/"写前端"/"出页面" | frontend-developer |
-| 包含"审查"/"review"/"部署"/"上线" | release-engineer |
+| 包含"审一下"/"看看明显问题"/"末端审核" | prototype-auditor |
+| 包含"部署"/"上线"/"发布" | 提示用户使用 `/deploy <项目> <平台>` 命令 |
 | 包含"优化流程"/"更新规则" | self-optimizer |
 | "继续"/"下一步"（无上下文） | 先读 .state.json 推断 |
 | 无法判定 | 返回澄清问题，不路由 |

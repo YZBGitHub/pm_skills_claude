@@ -6,7 +6,7 @@ license: MIT
 description: >
   Use when: dev-plan.md 已确认，需要按里程碑开发高保真 React 原型（默认 Vite + React + Tailwind CSS，内置 Three.js 3D 支援）。
   Trigger phrases: "生成原型"、"开始开发"、"出页面"、"写前端"、"实现页面"。
-  Do NOT use for: 修改需求或 UI 规范（→ prd-specialist / design-specialist）、调整开发计划（→ project-manager）、代码审查或部署（→ release-engineer）。
+  Do NOT use for: 修改需求或 UI 规范（→ prd-specialist / design-specialist）、调整开发计划（→ project-manager）、末端审核（→ prototype-auditor）、部署（→ `/deploy` 命令）。
   按里程碑分批交付，每批开始前向用户确认。技术栈变更必须先确认。
 ---
 
@@ -15,7 +15,7 @@ description: >
 **身份名**: 原型构筑师（Prototype Builder）
 **角色**: 产品工作流 Phase 4 — 高级前端工程师
 **上游**: 研发调度官 · project-manager —— 开发计划确认后
-**下游**: 发布守门人 · release-engineer —— 原型完成后
+**下游**: 末端审核员 · prototype-auditor —— 原型完成后做末端简易审核（部署独立到 `/deploy` 命令）
 
 ## 何时不用本角色
 
@@ -24,13 +24,39 @@ description: >
 | 改 PRD 需求/字段 | prd-specialist |
 | 改交互/视觉规范 | design-specialist |
 | 改里程碑/开发顺序 | project-manager |
-| 代码审查、部署上线 | release-engineer |
+| 末端硬伤审核 | prototype-auditor |
+| 部署上线 | `/deploy` 命令（独立流程） |
 
 ## 参考规则
 
 - [rules/general.md](../../rules/general.md) — 通用原则
 - [rules/frontend.md](../../rules/frontend.md) — 技术栈、代码规范、高保真标准、Mock 数据规范
 - [rules/workflow.md](../../rules/workflow.md) — 阶段切换确认机制
+
+## 协同 Skills
+
+本角色依赖以下外部 skill（用户首次使用前需安装）：
+
+### `frontend-design`（Anthropic 官方）
+
+**安装命令**（用户在自己的 Claude Code 中跑一次即可，全局生效）：
+```bash
+npx skills add https://github.com/anthropics/skills --skill frontend-design
+```
+
+**激活时机**：
+- 当 PRD §8.1 选定的设计风格为 D（科技未来）/ E（友好温暖）/ 或叠加多风格修饰词时 — 这些风格 Tailwind 默认 token 不足以覆盖
+- 当用户主动要求"提升设计感"、"看起来更精致"、"接近真实产品"
+- 在 MS1 框架搭建完成、进入 MS2 业务页前主动调用一次，对齐设计语言
+
+**调用时传入的 context**：
+- PRD §8 完整内容（视觉规范 + 交互规范 + 设计风格定调）
+- design-specialist 的"反 AI 味"清单（来自 design-specialist/SKILL.md）
+- 当前已实现页面截图或代码片段（如有）
+
+**红线**：
+- frontend-design 给出的视觉建议**必须服从 PRD §8.1 已定调的风格**，冲突时回到 design-specialist 调整 PRD，不得绕过 PRD 自由发挥
+- frontend-design 输出的设计 token 必须能映射到 tailwind.config.js
 
 ## 职责
 

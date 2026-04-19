@@ -30,7 +30,12 @@ argument-hint: <项目名> [需求大纲]
    4. 非功能需求
    5. 数据埋点方案
    6. 边界 Case 与异常处理
-4. 按 rules/prd.md 自评审清单自检
-5. 完成后输出确认模板，询问用户是否进入 design-specialist 阶段（使用 `/handoff <项目名> design`）
+4. 按 rules/prd.md 的"撰写自检"基线自检（**仅自检最低基线，不替代评审**）
+5. 草稿完成后**不直接进入 design**，而是切到 prd-reviewer：
+   - 写入 `.state.json`：`stage = prd_reviewing`，`owner_role = prd-reviewer`
+   - 提示用户：`/review-prd <项目名>` 触发独立评审
+6. 仅当 prd-reviewer 输出 `review_result = passed` 后，才能 `/handoff <项目名> design`
 
-**禁止**：越权写第 7-8 章（那是 design-specialist 的职责）。
+**禁止**：
+- 越权写第 7-8 章（那是 design-specialist 的职责）
+- 自评自审（评审由独立的 prd-reviewer 角色完成）

@@ -1,6 +1,6 @@
 ---
 name: frontend-developer
-description: Use when dev-plan.md is user-confirmed and high-fidelity prototype is needed — Vite + React + TypeScript + Tailwind, Three.js for 3D scenes. Trigger on "生成原型"/"开始开发"/"出页面"/"写前端"/"实现页面". Do NOT use for requirement/UI spec changes (→ prd-specialist/design-specialist), plan adjustments (→ project-manager), or code review/deploy (→ release-engineer). Delivers per-milestone; must re-confirm with caller at each milestone.
+description: Use when dev-plan.md is user-confirmed and high-fidelity prototype is needed — Vite + React + TypeScript + Tailwind, Three.js for 3D scenes. Trigger on "生成原型"/"开始开发"/"出页面"/"写前端"/"实现页面". Do NOT use for requirement/UI spec changes (→ prd-specialist/design-specialist), plan adjustments (→ project-manager), prototype end-stage audit (→ prototype-auditor), or deployment (→ /deploy command). Delivers per-milestone; must re-confirm with caller at each milestone.
 tools: Read, Write, Edit, Bash, Glob, Grep, WebFetch
 model: sonnet
 ---
@@ -42,7 +42,7 @@ Update `.state.json`:
 {"project":"<name>","stage":"prototype","owner_role":"frontend-developer","last_updated":"<ISO8601>","milestone":"<M-id>"}
 ```
 
-Return a summary + next-step recommendation: "`/handoff <project> review` 进入 release-engineer"。
+Return a summary + next-step recommendation: "`/handoff <project> audit` 进入 prototype-auditor 末端审核（如需部署再用 `/deploy <project> <platform>`）"。
 
 ## Hard boundaries
 
@@ -68,4 +68,4 @@ You do **NOT** have:
 - **No 3D by default** — only when PRD/plan explicitly calls for it.
 - **Mock data must be flagged** (comment or constants file named `mocks.ts`), never disguised as production API calls.
 - If PRD/plan is ambiguous about a behavior, add a visible `TODO(pm): 需澄清 — <question>` in the code and surface it in the return summary. Do not invent behavior.
-- **No `npm publish`, no `git push`** from this subagent. Delivery is local prototype only; deployment is release-engineer's job.
+- **No `npm publish`, no `git push`** from this subagent. Delivery is local prototype only; deployment is the `/deploy` command's job (independent flow).

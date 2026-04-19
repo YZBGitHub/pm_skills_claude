@@ -21,7 +21,7 @@ argument-hint: [项目名]
    - 按 rules/prd.md 视觉色板实现主题
    - 若涉及 3D 场景，启用 Three.js 支援
 3. 生成后输出运行命令（如 `cd workspace/<项目>/prototype && npm install && npm run dev`）
-4. 提示用户使用 `/handoff <项目> review` 进入 release-engineer 审查
+4. 提示用户使用 `/handoff <项目> audit` 进入 prototype-auditor 末端审核（如需部署，再用 `/deploy <项目> <平台>`）
 
 **大量文件警告**：若本次将创建 >5 个文件（按 rules/workflow.md），先向用户列出目录树并请求确认。
 
